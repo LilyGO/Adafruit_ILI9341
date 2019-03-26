@@ -20,17 +20,27 @@
 
 // For the Adafruit shield, these are the default.
 
+#include "SPI.h"
+#include "Adafruit_GFX.h"
+#include "Adafruit_ILI9341.h"
+#define TFT_BL   4
 #define TFT_CS   27
 #define TFT_DC   26
 #define TFT_MOSI 23
 #define TFT_CLK  18
 #define TFT_RST  5
 #define TFT_MISO 12
+
+
 Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_MOSI, TFT_CLK, TFT_RST, TFT_MISO);
+
 
 void setup() {
   Serial.begin(9600);
   Serial.println("ILI9341 Test!"); 
+  pinMode(TFT_BL, OUTPUT);
+//pinMode(TFT_BL, OUTPUT);
+  digitalWrite(TFT_BL,HIGH);
  
   tft.begin();
 
